@@ -1,6 +1,7 @@
 package com.zhangyu.controller;
 
 import com.zhangyu.entity.Customer;
+import com.zhangyu.exception.NoCustomerFoundException;
 import com.zhangyu.log.LogCustomer;
 import com.zhangyu.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class CustomerController {
 
     @RequestMapping(value = "/firstName/{name}")
     @ResponseBody
-    public List<Customer> getCustomer(@PathVariable String name) {
+    public List<Customer> getCustomer(@PathVariable String name) throws NoCustomerFoundException {
         List<Customer> customers = customerService.getCustomerByName(name);
-        if(customers.size() == 0) return null;
+        if(customers.size() == 0) throw new NoCustomerFoundException("no customer");
         return customers;
     }
 
