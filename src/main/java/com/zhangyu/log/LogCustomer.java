@@ -12,4 +12,8 @@ public class LogCustomer {
     public void logCustomer(Customer customer){
         logger.info(format("Create customer %s", customer.getFirstName()));
     }
+
+    public void logMessage(String message){
+        logger.info(message);
+    }
 }
