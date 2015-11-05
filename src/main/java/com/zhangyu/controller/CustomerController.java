@@ -1,5 +1,6 @@
 package com.zhangyu.controller;
 
+import com.wordnik.swagger.annotations.ApiOperation;
 import com.zhangyu.entity.Customer;
 import com.zhangyu.exception.NoCustomerFoundException;
 import com.zhangyu.log.LogCustomer;
@@ -16,15 +17,14 @@ import java.util.List;
 @Configuration
 @ComponentScan
 public class CustomerController {
-
-    @Autowired
-    private CustomerService customerService;
-
     @Value(value = "${no.customer.message}")
     private String noCustomer;
 
     @Value(value = "${get.customer.message}")
     private String getByFirstName;
+
+    @Autowired
+    private CustomerService customerService;
 
     LogCustomer log=new LogCustomer();
 
@@ -35,10 +35,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @RequestMapping(value = "/firstName/{name}")
+    @ApiOperation(value="Get customer")
+    @RequestMapping(value = "/customers/{firstName}")
     @ResponseBody
-    public List<Customer> getCustomer(@PathVariable String name) throws NoCustomerFoundException {
-        List<Customer> customers = customerService.getCustomerByFirstName(name);
+    public List<Customer> getCustomer(@PathVariable String firstName) throws NoCustomerFoundException {
+        List<Customer> customers = customerService.getCustomerByFirstName(firstName);
         if(customers.size() == 0) {
             log.logMessage(noCustomer);
             throw new NoCustomerFoundException("no customer");
@@ -47,7 +48,8 @@ public class CustomerController {
         return customers;
     }
 
-    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+    @ApiOperation(value="create customer")
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
     public Customer createCustomer(@RequestBody Customer customer) {
         log.logCustomer(customer);
         return customerService.save(customer);
