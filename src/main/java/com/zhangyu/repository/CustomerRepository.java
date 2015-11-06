@@ -1,6 +1,6 @@
 package com.zhangyu.repository;
 
-import com.zhangyu.entity.Customer;
+import com.zhangyu.model.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
