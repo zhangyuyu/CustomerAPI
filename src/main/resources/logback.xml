@@ -13,7 +13,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.zhangyu.log.CustomerLogger" level="info">
+    <logger name="com.zhangyu.controller.CustomerController" level="info">
         <appender-ref ref="FILE" />
     </logger>
 

@@ -1,6 +1,6 @@
 package com.zhangyu.exception;
 
-public class NoCustomerFoundException extends Exception {
+public class NoCustomerFoundException extends RuntimeException {
     public NoCustomerFoundException(String message) {
         super(message);
     }
