@@ -1,8 +1,19 @@
 package com.zhangyu.model;
 
-public class Customer {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "customer")
+public class CustomerEntity {
+
+    @Id
+    @GeneratedValue
     private int customerID;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="age")
     private int age;
 
     public int getCustomerID() {

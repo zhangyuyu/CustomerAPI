@@ -1,10 +1,10 @@
 package com.zhangyu.service;
 
-import com.zhangyu.model.Customer;
+import com.zhangyu.model.CustomerEntity;
 
 import java.util.List;
 
 public interface CustomerService {
-    public List<Customer> getCustomerByFirstName(String name);
-    public Customer createCustomer(Customer customer) ;
+    public List<CustomerEntity> getCustomerByname(String name);
+    public CustomerEntity createCustomer(CustomerEntity customerEntity) ;
 }
