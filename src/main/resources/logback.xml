@@ -9,11 +9,11 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
-            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level - %msg %n</Pattern>
         </encoder>
     </appender>
 
-    <logger name="com.zhangyu.controller.CustomerController" level="info">
+    <logger name="com.zhangyu.filter.RequestLoggingFilter" level="info">
         <appender-ref ref="FILE" />
     </logger>
 

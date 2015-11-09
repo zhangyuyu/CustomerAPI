@@ -15,7 +15,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @ApiOperation(value="Get customers by name")
-    @RequestMapping(value = "/customers/name/{name}")
+    @RequestMapping(value = "/customers/name/{name}", method = RequestMethod.GET)
     @ResponseBody
     public List<Customer> getCustomers(@PathVariable String name){
         return customerService.getCustomers(name);
@@ -23,7 +23,7 @@ public class CustomerController {
 
 
     @ApiOperation(value="Get customer by customer ID")
-    @RequestMapping(value = "/customers/id/{customerId}")
+    @RequestMapping(value = "/customers/id/{customerId}", method = RequestMethod.GET)
     @ResponseBody
     public Customer getCustomer(@PathVariable int customerId){
         return customerService.getCustomer(customerId);
