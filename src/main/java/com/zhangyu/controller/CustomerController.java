@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 @RestController
 public class CustomerController {
 
@@ -25,12 +27,12 @@ public class CustomerController {
     @ApiOperation(value="Get customer by customer ID")
     @RequestMapping(value = "/customers/id/{customerId}", method = RequestMethod.GET)
     @ResponseBody
-    public Customer getCustomer(@PathVariable int customerId){
+    public Customer getCustomer(@PathVariable int customerId) {
         return customerService.getCustomer(customerId);
     }
 
     @ApiOperation(value="create customer")
-    @RequestMapping(value = "/customers", method = RequestMethod.POST)
+    @RequestMapping(value = "/customers", method = POST)
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerService.createCustomer(customer);
     }
