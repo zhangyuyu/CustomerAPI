@@ -21,7 +21,12 @@ public class RequestLoggingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        LOGGER.info(format("%s,%s",request.getMethod(), request.getRequestURL().toString()));
+
+        if(request.getQueryString() == null){
+            LOGGER.info(format("%s,%s",request.getMethod(), request.getRequestURL()));
+        }else {
+            LOGGER.info(format("%s,%s?%s", request.getMethod(), request.getRequestURL(), request.getQueryString()));
+        }
         chain.doFilter(servletRequest, servletResponse);
     }
 

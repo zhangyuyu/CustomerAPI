@@ -19,7 +19,6 @@ public class SwaggerConfig {
     public SwaggerSpringMvcPlugin customImplementation(){
         return  new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
                 .apiInfo(new ApiInfo("Customer api", "restful api", "", "", "", ""))
-                .useDefaultResponseMessages(false)
                 .includePatterns("/customers.*");
     }
 
