@@ -22,8 +22,9 @@ public class CustomerServiceImpl implements CustomerService{
     private CustomerTranslator customerTranslator;
 
     public List<Customer> getCustomers(String name) {
-        List<CustomerEntity> customerEntity = customerRepository.findByName(name);
-        return customerTranslator.translateToCustomerList(customerEntity);
+        List<CustomerEntity> customerEntities = customerRepository.findByName(name);
+        if(customerEntities.size() == 0) throw new NoCustomerFoundException(format("%s was not found", name));
+        return customerTranslator.translateToCustomerList(customerEntities);
     }
 
     public Customer createCustomer(Customer customer) {
@@ -34,14 +35,7 @@ public class CustomerServiceImpl implements CustomerService{
 
     public Customer getCustomer(int customerId) {
         CustomerEntity customerEntity = customerRepository.findOne(customerId);
-        isCustomerExit(customerId, customerEntity);
+        if(customerEntity == null) throw new NoCustomerFoundException(format("%d was not found", customerId));
         return customerTranslator.translateToCustomer(customerEntity);
     }
-
-    private void isCustomerExit(int customerId, CustomerEntity customerEntity) {
-        if(customerEntity == null){
-            throw new NoCustomerFoundException(format("%d not found", customerId));
-        }
-    }
-
 }
