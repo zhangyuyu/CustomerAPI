@@ -32,7 +32,6 @@ dependencies {
     compile('mysql:mysql-connector-java')
     compile('com.mangofactory:swagger-springmvc:1.0.0')
     compile('org.springframework.boot:spring-boot-actuator')
-    compile('org.springframework.boot:spring-boot-starter-security')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
