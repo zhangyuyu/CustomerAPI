@@ -6,21 +6,23 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath('io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE')
+        classpath('au.com.dius:pact-jvm-provider-gradle_2.11:3.3.3')
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'au.com.dius.pact'
 
 jar {
     baseName = 'SpringBootStudy'
     version = '0.0.1-SNAPSHOT'
 }
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -38,6 +40,19 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.6'
+}
+
+pact {
+    serviceProviders {
+        customerAPI_Provider
+                {
+                    host = "localhost"
+                    port = 8080
+                    hasPactWith('customerAPI_consumer') {
+                        pactFile = file('src/main/resources/pact/customerAPI_consumer.json')
+                    }
+                }
+    }
 }
 
 applicationDefaultJvmArgs = [

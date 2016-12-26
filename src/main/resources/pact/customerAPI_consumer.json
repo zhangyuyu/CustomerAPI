@@ -1,0 +1,43 @@
+{
+  "provider": {
+    "name": "customerAPI_Provider"
+  },
+  "consumer": {
+    "name": "customerAPI_consumer"
+  },
+  "interactions": [
+    {
+      "description": "Get Customer",
+      "request": {
+        "headers": {
+          "Accept": "*/*",
+          "Authorization": "Basic dXNlcjpwYXNzd29yZA=="
+        },
+        "method": "get",
+        "path": "/customers/3"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "status": 200,
+        "body": {
+          "customerID": 3,
+          "name": "yu",
+          "age": 11
+        },
+        "responseMatchingRules": {
+          "$.body.customerID": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          },
+          "$.body.age": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ]
+}

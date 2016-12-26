@@ -1,7 +1,7 @@
 ## Spring boot | gradle | Swagger
 
 ### 启动Project
-gradle bootRun
+./gradlew bootRun
 
 ### 访问Swagger UI
 http://localhost:8080/customer-api/index.html
@@ -22,3 +22,8 @@ http://localhost:8080/customer-api/index.html
 |mappings	|显示 Spring MVC 应用中通过“@RequestMapping”添加的路径映射。|	
 |shutdown	|关闭应用。|	
 |trace	|显示应用相关的跟踪（trace）信息。	|
+
+
+### Pact
+- 先手动`./gradlew bootRun`起来
+- 然后运行`./gradlew pactVerify`
