@@ -36,6 +36,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-actuator')
     compile('org.springframework.boot:spring-boot-starter-security')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('au.com.dius:pact-jvm-consumer-junit_2.11:3.3.3')
 }
 
 task wrapper(type: Wrapper) {

@@ -25,5 +25,13 @@ http://localhost:8080/customer-api/index.html
 
 
 ### Pact
+1. 作为Provider去verify consume的contract
+
+- 将contract file手动放在`src/main/resources/pact/customerAPI_consumer.json`处
+- 再手动`./gradlew bootRun`起来
+- 最后运行`./gradlew pactVerify`
+
+2. 作为consume去生成provider需要的contract
+
 - 先手动`./gradlew bootRun`起来
-- 然后运行`./gradlew pactVerify`
+- 然后在IDE中手动运行测试GenerateContractForCustomerApi，会自动生成`target/pacts/customerAPI_consumer-CustomerAPI_Provide.json`

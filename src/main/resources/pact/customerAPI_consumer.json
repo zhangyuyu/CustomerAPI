@@ -13,7 +13,7 @@
           "Accept": "*/*",
           "Authorization": "Basic dXNlcjpwYXNzd29yZA=="
         },
-        "method": "get",
+        "method": "GET",
         "path": "/customers/3"
       },
       "response": {
@@ -39,5 +39,13 @@
         }
       }
     }
-  ]
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "2.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.3.3"
+    }
+  }
 }

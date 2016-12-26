@@ -1,0 +1,47 @@
+{
+    "provider": {
+        "name": "CustomerAPI_Provide"
+    },
+    "consumer": {
+        "name": "customerAPI_consumer"
+    },
+    "interactions": [
+        {
+            "description": "Get Customer",
+            "request": {
+                "method": "GET",
+                "path": "/customers/3"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json;charset=UTF-8"
+                },
+                "body": {
+                    "age": 212148091,
+                    "customerID": 479859609,
+                    "name": "fcVrwgkpBfqmJHlpHLOG"
+                },
+                "matchingRules": {
+                    "$.body.age": {
+                        "match": "integer"
+                    },
+                    "$.body.name": {
+                        "match": "type"
+                    },
+                    "$.body.customerID": {
+                        "match": "integer"
+                    }
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "2.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.3.3"
+        }
+    }
+}
